@@ -23,7 +23,7 @@ html
       section.register-title-section
         h1 Register
       section.user-data-section
-        form
+        form(action='/bob' method='post' name='register')
           input(type='text' name='username' placeholder='Username' required='')
           input(type='password' name='password' placeholder='Password' required='')
           section.checkbox-section
