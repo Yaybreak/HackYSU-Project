@@ -1,5 +1,7 @@
 var express = require('express');
 var fs = require("fs");
+var jsonfile = require("jsonfile");
+var Cookie = require("js-cookie");
 var router = express.Router();
 
 /* GET home page. */
@@ -22,64 +24,87 @@ router.get('/register.html', function(req, res, next) {
 router.get('/index.html', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
+router.get('/devices.html', function(req, res, next) {
+  let user = req.cookies.user;
+  let data = jsonfile.readFileSync("C:/xampp/htdocs/HackYSU Project/private/userdata/data.json");
+  let devices = Object.keys(data[user].devices);
+  res.render('devices', { devices });
+});
 router.post('/bob',function(req,res,next) {
-  let username = req.body.username.trim();
-  let password = req.body.password.trim();
-  fs.appendFile("C:/xampp/htdocs/HackYSU Project/private/userdata/data.txt",username+"\n"+password+"\n",(err)=>{
-    if (err) throw err;
+  let username = req.body.username;
+  let password = req.body.password;
+  jsonfile.writeFile("C:/xampp/htdocs/HackYSU Project/private/userdata/data.json",{[username]:{
+    password,
+    devices: {}
+  }},(err)=>{
+    if(err) throw err;
   });
   res.render('index');
 });
 
 router.post('/billy',function(req,res,next) {
-  let username = req.body.username.trim();
-  let password = req.body.password.trim();
-  let valid_username = true;
-  let valid_password = true;
-  fs.readFile("C:/xampp/htdocs/HackYSU Project/private/userdata/data.txt",(err,buffer)=>{
-    if (err) throw err;
-    let data = buffer.toString('utf8');
-    console.log(data);
-    let gotten_username = undefined;
-    let gotten_password = undefined;
-    let gotten = false;
-    for ([v,i] of data.split("\n").entries()) {
-      console.log(v,i);
-      console.log(gotten);
-      console.log(username);
-      console.log(password);
-      if (i%2 == 0) {
-        if (username.trim() == v.trim()) {
-          gotten_username = v;
-          gotten = true;
-        }
-      }
-      if (i%2 == 1 && gotten == true) {
-        if (password == v) {
-          gotten_password = v;
-        }
-        else {
-          valid_password = false;
-          break;
-        }
-      }
-    }
-    if (gotten == false) {
-      valid_username = false;
-    }
-    if (valid_password && valid_username) {
+  let username = req.body.username;
+  let password = req.body.password;
+  let data = jsonfile.readFileSync("C:/xampp/htdocs/HackYSU Project/private/userdata/data.json");
+  if (username in data) {
+    if (password == data[username].password) {
+      res.clearCookie("no_pp");
+      res.clearCookie("ur_mom_bad");
       res.cookie("user",username);
       res.render('index');
     }
-    else if (valid_password == false) {
+    else {
+      res.clearCookie("no_pp");
+      res.clearCookie("ur_mom_bad");
       res.cookie("no_pp",true);
       res.render('login');
     }
-    else {
-      res.cookie("ur_mom_bad",true);
-      res.render('login');
-    }
-  })
+  }
+  else {
+    res.clearCookie("no_pp");
+    res.clearCookie("ur_mom_bad");
+    res.cookie("ur_mom_bad",true);
+    res.render('login');
+  }
 });
+
+router.post("/joe",function(req,res,next) {
+  let user = req.cookies.user;
+  let devicename = req.body.devicename;
+  let random_data = req.body.randomdata;
+  let data = jsonfile.readFileSync("C:/xampp/htdocs/HackYSU Project/private/userdata/data.json");
+  if (devicename in data[user].devices) {
+    res.cookie("d_nuts",true);
+    res.render('devices');
+  }
+  else {
+    jsonfile.writeFileSync("C:/xampp/htdocs/HackYSU Project/private/userdata/data.json",{[user]:{
+      devices: {
+        [devicename]:{
+          random_data
+        }
+      }
+    }});
+    res.clearCookie("d_nuts");
+    res.render("devices");
+  }
+});
+
+router.post("/john",function(req,res,next) {
+  let user = req.cookies.user;
+  let devicename = req.body.devicename;
+  let data = jsonfile.readFileSync("C:/xampp/htdocs/HackYSU Project/private/userdata/data.json");
+  if (devicename in data[user].devices) {
+    delete data[user].devices[devicename];
+    fs.writeFileSync("C:/xampp/htdocs/HackYSU Project/private/userdata/data.json",JSON.stringify(data),(err)=>{
+      if (err) throw err;
+    });
+    res.render("devices");
+  }
+  else {
+    res.cookie("depression",true);
+    res.render("devices");
+  }
+})
 
 module.exports = router;

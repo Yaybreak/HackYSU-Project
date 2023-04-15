@@ -23,39 +23,27 @@ html
           li
             a Guide
     main
-      section.remote-display-section
-        iframe.view-section(src='blank.html')
-      section.power-button-section
-        button(onclick='turnOn()')
-          img(src='/images/Power_Button.jpg' alt='Power Button')
-      section.stats-section
-        table
-          thead
-            tr
-              th Panel 1
-              th Panel 2
-          tbody
-            tr
-              td
-                span Latency: 
-                | 0ms
-              td
-                span Fps: 
-                | 0
-            tr
-              td
-                span Ping: 
-                | 0ms
-              td
-                span Up: 
-                | 0mb/s
-            tr
-              td
-                span Uptime: 
-                | 0.00s
-              td
-                span Down: 
-                | 0mb/s
+      section.device-user-attain
+        form(action="/joe", method="post")
+            section.device-utility-title-section
+                h1 Device Manager 
+            section.device-details-section
+                input(type="text", name="devicename", placeholder="device name")
+                input(type="text", name="randomdata", placeholder="device access")
+            section.add-device-section 
+                label.custom-button
+                    span Add
+                    input(type="submit", value="AddDevice")
+      section.device-list-section
+        ul 
+            each device in devices
+                li #{device}
+        //- 
+            li 
+                form(action="/john", method="post")
+                    input(type="text", value="name" name="devicename" hidden)
+                    input(type="submit", name="RemoveDevice")
+                span name
     footer
       section.date-section
         h1 ADHD PRIME

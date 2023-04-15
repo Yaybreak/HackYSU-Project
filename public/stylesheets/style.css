@@ -228,6 +228,43 @@ html,body {
     }
   /* oauth-section */
 
+  /* device-user-attain */
+    .device-user-attain {
+      display: flex;
+      text-align: center;
+      flex-direction: row;
+      justify-content: center;
+      align-content: center;
+    }
+    .device-user-attain ul { /* list layout */
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    /* device-utility-title-section */
+      .device-utility-title-section {
+        margin-top: 1em;
+      }
+    /* device-utility-title-section */
+    /* add-device-section */
+      .add-device-section {
+        margin-top: 1em;
+        height: 5em;
+        width: 100%;
+        text-align: center;
+      }
+    /* add-device-section */
+    /* device-details-section */
+      .device-details-section {
+        margin-top: 2em;
+        width: 100%;
+      }
+    /* device-details-section */
+  /* device-user-attain */
+
 /* main */
 
 /* footer */
