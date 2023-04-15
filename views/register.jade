@@ -1,0 +1,65 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width')
+    title replit
+    link(href='stylesheets/style.css' rel='stylesheet' type='text/css')
+  body
+    header
+      nav
+        ul
+          li
+            h1.logo
+              a(href='index.html' rel='home')
+                img(src='/images/meme prime.png' alt='Meme Team Logo')
+              label
+                | ADHD Prime
+          li
+            a(href='login.html') Log in
+          li
+            a Something
+    main.main-section
+      section.register-title-section
+        h1 Register
+      section.user-data-section
+        form
+          input(type='text' name='username' placeholder='Username' required='')
+          input(type='password' name='password' placeholder='Password' required='')
+          section.checkbox-section
+            div
+              input#notifications-checkbox(type='checkbox')
+              label(for='notifications-checkbox') Receive Notifications
+            div
+              input#terms-checkbox(type='checkbox')
+              label(for='terms-checkbox') Terms and Agreements
+          section.register-button-section
+            label.custom-button
+              | Register
+              input(name='submit' type='submit' value='Register')
+      section.oauth-section
+        label.custom-button
+          | Sign in with Google
+          button
+    footer
+      section.date-section
+        h1 ADHD PRIME
+        h5 HACKATHON APRIL 2023
+      section.name-section
+        ul
+          li
+            p name
+            p email
+            p number
+          li
+            p name
+            p email
+            p number
+          li
+            p name
+            p email
+            p number
+          li
+            p Edwin Patterson II
+            p Edpatterson01@student.ysu.edu
+            p 330-716-5392

@@ -1,5 +1,78 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width')
+    title ADHD Prime
+    link(href='stylesheets/style.css' rel='stylesheet' type='text/css')
+    script(src='script.js' async='' defer='')
+    link(rel='icon' type='image/png' sizes='32x32' href='/images/meme prime.png')
+  body
+    header
+      nav
+        ul
+          li
+            h1.logo
+              a(href='index.html' rel='home')
+                img(src='/images/meme prime.png' alt='Meme Team Logo')
+              label ADHD Prime
+          li
+            a(href='login.html') Log in
+          li
+            a Guide
+    main
+      section.remote-display-section
+        iframe.view-section(src='blank.html')
+      section.power-button-section
+        button(onclick='turnOn()')
+          img(src='/images/Power_Button.jpg' alt='Power Button')
+      section.stats-section
+        table
+          thead
+            tr
+              th Panel 1
+              th Panel 2
+          tbody
+            tr
+              td
+                span Latency: 
+                | 0ms
+              td
+                span Fps: 
+                | 0
+            tr
+              td
+                span Ping: 
+                | 0ms
+              td
+                span Up: 
+                | 0mb/s
+            tr
+              td
+                span Uptime: 
+                | 0.00s
+              td
+                span Down: 
+                | 0mb/s
+    footer
+      section.date-section
+        h1 ADHD PRIME
+        h5 HACKATHON APRIL 2023
+      section.name-section
+        ul
+          li
+            p name
+            p email
+            p number
+          li
+            p Tyler Bouck
+            p tsbouck@student.ysu.edu
+            p 440-812-6431
+          li
+            p Elion Oliver
+            p ekoliver@student.ysu.edu
+            p 330-318-0068
+          li
+            p Edwin Patterson II
+            p Edpatterson01@student.ysu.edu
+            p 330-716-5392

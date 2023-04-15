@@ -1,8 +1,313 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+  --nav-bar-height: 5em;
+  --nav-color: #ff3333;
+  --default-border-color: rgb(105,105,105);
+  --remote-border-color: var(--default-border-color);
+  --power-button-border-color: var(--default-border-color);
+  --stats-border-color: var(--default-border-color);
+  --footer-background-color: #e60000;
 }
 
-a {
-  color: #00B7FF;
+html,body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  background-color: black;
+  color: white;
+  font-family: sans-serif;
 }
+
+/* header */
+  header { /* header styling */
+    display: flex;
+    background-color: var(--nav-color);
+    color: black;
+    width: 100%;
+  }
+
+  /* nav */
+    nav { /* layout */
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: var(--nav-bar-height);
+    }
+    nav ul { /* list layout */
+      display: flex;
+      align-items: center;
+      list-style-type: none;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    nav ul li { /* list item layout */
+      display: inline-flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    nav ul li:hover {
+      box-shadow: inset 0em -5em rgba(0,0,0,0.5);
+    }
+    nav ul li:first-child:hover {
+      box-shadow: none;
+    }
+    nav ul li:not(:first-child) a {
+      display: flex;
+      font-size: 3vw;
+      text-decoration: none;
+      height: 100%;
+      width: 100%;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      color: black;
+    }
+    nav ul li label {
+      font-size: 3vw;
+    }
+  /* nav */
+  
+  /* logo */
+    .logo { /* layout */
+      display: flex;
+      align-items: center;
+      height: 100%;
+      margin: 0;
+    }
+    .logo a {
+      height: 100%;
+    }
+    .logo a img { /* image styling */
+      height: 100%;
+      border-radius: 10em;
+    }
+    .logo h1 { /* logo text styling */
+      font-size: 5vw;
+      text-align: left;
+    }
+  /* logo */
+
+/* header */
+
+/* main-section (login and register only) */
+  .main-section {
+    margin-top: 7em;
+    margin-bottom: 7em;
+  }
+
+/* main */
+  main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* view-section */
+    .view-section {
+      height: 75vh;
+      width: 75vw;
+      border: solid;
+      border-color:	var(--remote-border-color);
+      border-width: 1em;
+      margin-top: 2em;
+      margin-bottom: 2em;
+    }
+  
+  /* power-button-section */
+    .power-button-section {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+    }
+    .power-button-section button {
+      height: 100%;
+      background-color: transparent;
+      border: none;
+      transition: filter 0.05s;
+    }
+    .power-button-section button:active {
+      filter: opacity(0.5);
+    }
+    .power-button-section button img {
+      max-height: 7em;
+      max-width: 7em;
+      cursor: pointer;
+    }
+  /* power-button-section */
+
+  /* stats-section */
+    .stats-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-size: 25px;
+    }
+    .stats-section table {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: stretch;
+    }
+    .stats-section table tr {
+      display: flex;
+      width: 100%;
+      text-align: center;
+    }
+    .stats-section table tbody tr td {
+      width: 100%;
+    }
+    .stats-section table thead tr th {
+      width: 100%; 
+    }
+  /* stats-section */
+
+  /* register-title-section */
+    .register-title-section {
+      font-size: inherit;
+    }
+  /* register-title-section */
+
+  /* user-data-section */
+    .user-data-section, .user-data-section form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .user-data-section input {
+      width: 200px;
+    }
+  /* user-data-section */
+
+  /* register-redirect-section */
+    .register-redirect-section p a {
+      color: #e60000;
+      text-decoration: none;
+    }
+    .register-redirect-section p a:hover {
+      color: #e60000;
+      text-decoration: underline;
+    }
+  /* register-redirect-section */
+
+  /* checkbox-section */
+    .checkbox-section {
+      display: flex;
+      flex-direction: column;
+      align-content: left;
+    }
+    .checkbox-section input {
+      width: 10px;
+    }
+    .checkbox-section div {
+      display: flex;
+      text-align: left;
+      align-content: flex-start;
+      justify-content: left;
+    }
+  /* checkbox-section */
+
+  /* register-button-section */
+    .register-button-section {
+      margin-top: 10px;
+    }
+  /* register-button-section */
+
+  /* oauth-section */
+    .oauth-section {
+      margin-top: 10px;
+    }
+  /* oauth-section */
+
+/* main */
+
+/* footer */
+  footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: var(--footer-background-color);
+    color: black;
+    margin-top: 3em;
+  }
+
+  /* date-section */
+    .date-section {
+      display: flex;
+      flex-direction: column;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  /* date-section */
+
+  /* name-section */
+    .name-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    .name-section ul {
+      list-style-type: none;
+    }
+    .name-section ul li {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 25px;
+    }
+    .name-section ul li p {
+      height: 0px;
+      font-size: 10px;
+    }
+  /* name-section */
+/* footer */
+
+/* custom-button */
+  .custom-button :is(input,button) {
+    display: none;
+  }
+  .custom-button {
+    cursor: pointer;
+    border: 2px solid var(--default-border-color);
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-top: 5px;
+  }
+/* custom-button */
+
+/* text input */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+/* text input */
+
+/* blank-remote-screen */
+#blank-remote-screen {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: gray;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+}
+/* blank-remote-screen */
